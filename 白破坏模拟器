@@ -1,0 +1,100 @@
+
+
+local puohuai = Instance.new("ScreenGui")
+local Main = Instance.new("Frame")
+local biaoti = Instance.new("TextLabel")
+local close = Instance.new("TextButton")
+local shuliang = Instance.new("TextBox")
+local coins = Instance.new("TextButton")
+local level = Instance.new("TextButton")
+local sudiu = Instance.new("TextBox")
+local yingyon = Instance.new("TextButton")
+
+
+
+puohuai.Name = "puohuai"
+puohuai.Parent =  game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+Main.Name = "Main"
+Main.Parent = puohuai
+Main.BackgroundColor3 = Color3.fromRGB(85, 255, 255)
+Main.Size = UDim2.new(0, 146, 0, 243)
+Main.Active = true
+Main.Draggable = true
+biaoti.Name = "biaoti"
+biaoti.Parent = Main
+biaoti.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+biaoti.Size = UDim2.new(0, 101, 0, 37)
+biaoti.Font = Enum.Font.SourceSans
+biaoti.TextColor3 = Color3.fromRGB(0, 0, 0)
+biaoti.TextSize = 14.000
+biaoti.Text="白0.9"
+close.Name = "close"
+close.Parent = Main
+close.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+close.Position = UDim2.new(0.691780806, 0, 0, 0)
+close.Size = UDim2.new(0, 45, 0, 37)
+close.Font = Enum.Font.SourceSans
+close.TextColor3 = Color3.fromRGB(0, 0, 0)
+close.TextSize = 14.000
+close.Text="X"
+close.MouseButton1Click:Connect(function()
+	puohuai:Destroy()
+end)
+shuliang.Name = "shuliang"
+shuliang.Parent = Main
+shuliang.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+shuliang.Position = UDim2.new(0, 0, 0.150649905, 0)
+shuliang.Size = UDim2.new(0, 146, 0, 42)
+shuliang.Font = Enum.Font.SourceSans
+shuliang.Text = "数量"
+shuliang.TextColor3 = Color3.fromRGB(0, 0, 0)
+shuliang.TextSize = 14.000
+
+coins.Name = "coins"
+coins.Parent = Main
+coins.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+coins.Position = UDim2.new(0, 0, 0.32332629, 0)
+coins.Size = UDim2.new(0, 146, 0, 40)
+coins.Font = Enum.Font.SourceSans
+coins.TextColor3 = Color3.fromRGB(0, 0, 0)
+coins.TextSize = 14.000
+coins.Text="增加金币"
+coins.MouseButton1Click:Connect(function()
+	game:GetService("ReplicatedStorage").Remotes.generateBoost:FireServer("Coins", shuliang.Text, 99999999)
+end)
+	level.Name = "level"
+level.Parent = Main
+level.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+level.Position = UDim2.new(0, 0, 0.487192005, 0)
+level.Size = UDim2.new(0, 146, 0, 44)
+level.Font = Enum.Font.SourceSans
+level.TextColor3 = Color3.fromRGB(0, 0, 0)
+level.TextSize = 14.000
+	level.Text="增加等级"
+	level.MouseButton1Click:Connect(function()
+
+		game:GetService("ReplicatedStorage").Remotes.generateBoost:FireServer("Levels", shuliang.Text, 10)
+	end)
+sudiu.Name = "sudiu"
+sudiu.Parent = Main
+sudiu.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+sudiu.Position = UDim2.new(0, 0, 0.664563656, 0)
+sudiu.Size = UDim2.new(0, 146, 0, 44)
+sudiu.Font = Enum.Font.SourceSans
+sudiu.Text = "110"
+sudiu.TextColor3 = Color3.fromRGB(0, 0, 0)
+sudiu.TextSize = 14.000
+
+yingyon.Name = "yingyon"
+yingyon.Parent = Main
+yingyon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+yingyon.Position = UDim2.new(0, 0, 0.843621373, 0)
+yingyon.Size = UDim2.new(0, 146, 0, 38)
+yingyon.Font = Enum.Font.SourceSans
+yingyon.TextColor3 = Color3.fromRGB(0, 0, 0)
+yingyon.TextSize = 14.000
+yingyon.Text="应用速度"
+yingyon.MouseButton1Click:Connect(function()
+	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = sudiu.Text
+end)
